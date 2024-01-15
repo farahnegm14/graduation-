@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:graduation_project/Home.dart';
-import 'package:graduation_project/commen_widget/round_button.dart';
+import 'package:graduation_project/commen_component/app_buttons/round_button.dart';
+import 'package:graduation_project/home_screen/Home.dart';
 import 'package:graduation_project/creat_account/login/screen/login_screen.dart';
 import 'package:graduation_project/creat_account/register/screen/register_screen.dart';
 
@@ -24,11 +24,10 @@ class _StartUpScreenState extends State<StartUpScreen> {
               child: Column(
                 children: [
                   Image.asset(
-                    "assets/logo/splash icon.png",
-                    height: 200,
-                    width: 200,
+                    "assets/logo/logo.png",
+                    height: 350,
+                    width: 350,
                   ),
-                  const SizedBox(height: 30,),
                   RoundButton(
                       title: "Login",
                       onPressed: (){
@@ -40,10 +39,6 @@ class _StartUpScreenState extends State<StartUpScreen> {
                       onPressed: (){
                         navigateToRegisterScreen();
                       }),
-
-
-
-
                 ],
               ),
             ),
@@ -76,7 +71,7 @@ class _StartUpScreenState extends State<StartUpScreen> {
 
   void navigateToHomeScreen() {
     Navigator.push(context,MaterialPageRoute(builder: (context){
-      return Home();
+      return HomeScreen();
     }));
   }
 }

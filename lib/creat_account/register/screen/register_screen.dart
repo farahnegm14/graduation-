@@ -1,9 +1,9 @@
 import 'package:custom_signin_buttons/custom_signin_buttons.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/Home.dart';
-import 'package:graduation_project/color_extension.dart';
-import 'package:graduation_project/commen_widget/round_button.dart';
-import 'package:graduation_project/commen_widget/round_textfield.dart';
+import 'package:graduation_project/commen_component/app_buttons/round_button.dart';
+import 'package:graduation_project/commen_component/app_colors/color_extension.dart';
+import 'package:graduation_project/commen_component/app_widgets/round_textfield.dart';
+import 'package:graduation_project/home_screen/Home.dart';
 import '../../login/screen/login_screen.dart';
 
 
@@ -91,7 +91,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     title: "Register",
                     onPressed: () {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
+                          MaterialPageRoute(builder: (context) => HomeScreen()));
                       //const CompleteProfileView()));
                     }),
                const  SizedBox(

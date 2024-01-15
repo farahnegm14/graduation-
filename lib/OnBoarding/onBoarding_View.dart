@@ -1,149 +1,197 @@
-import 'package:carousel_slider/carousel_controller.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:graduation_project/color_extension.dart';
-import 'package:graduation_project/commen_widget/round_button.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:graduation_project/start_up_screen.dart';
 
-class OnBoardingView extends StatefulWidget {
-  const OnBoardingView({super.key});
+import '../commen_component/app_buttons/custom_button.dart';
 
-  @override
-  State<OnBoardingView> createState() => _OnBoardingView();
-}
+final controller = PageController(initialPage: 0);
 
-class _OnBoardingView extends State<OnBoardingView> {
-  CarouselController buttonCarouselController = CarouselController();
-
-  List goalArr = [
-    {
-      "image": "assets/image/eye.jpg",
-      "title": "Improve Shape",
-      "subtitle":
-          "I have a low amount of body fat\nand need / want to build more\nmuscle"
-    },
-    {
-      "image": "assets/image/help.jpeg",
-      "title": "Lean & Tone",
-      "subtitle":
-          "I’m “skinny fat”. look thin but have\nno shape. I want to add learn\nmuscle in the right way"
-    },
-    {
-      "image": "assets/image/world.png",
-      "title": "Lose a Fat",
-      "subtitle":
-          "I have over 20 lbs to lose. I want to\ndrop all this fat and gain muscle\nmass"
-    },
-  ];
+class PageViewScreen extends StatelessWidget {
+  const PageViewScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    var media = MediaQuery.of(context).size;
     return Scaffold(
-      backgroundColor: TColor.white,
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.only(top: 10, bottom: 10, left: 10 , right: 10),
-          child: Column(
-            children: [
-              Text(
-                "What is BASEERA ?",
-                style: TextStyle(
-                    color: TColor.black,
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700),
-              ),
-              Text(
-                "We Are here to help you \n in ",
-                textAlign: TextAlign.center,
-                style: TextStyle(color: TColor.gray, fontSize: 13),
-              ),
-              const  SizedBox(height: 20,),
-              Stack(
-                children: [
-                  Center(
-                    child: CarouselSlider(
-                      items: goalArr
-                          .map(
-                            (gObj) => Container(
-                              decoration: BoxDecoration(
-                                gradient: LinearGradient(
-                                    colors: TColor.primaryG,
-                                    begin: Alignment.topLeft,
-                                    end: Alignment.bottomRight),
-                                borderRadius: BorderRadius.circular(25),
-                              ),
-                              padding: EdgeInsets.only(
-                                top: 10,
-                              ),
-                              alignment: Alignment.center,
-                              child: FittedBox(
-                                child: Column(
-                                  children: [
-                                    Image.asset(
-                                      gObj["image"].toString(),
-                                      width: media.width * 0.5,
-                                      fit: BoxFit.fitWidth,
-                                    ),
-                                    SizedBox(
-                                      height: media.width * 0.1,
-                                    ),
-                                    Text(
-                                      gObj["title"].toString(),
-                                      style: TextStyle(
-                                          color: TColor.white,
-                                          fontSize: 14,
-                                          fontWeight: FontWeight.w700),
-                                    ),
-                                    Container(
-                                      width: media.width * 0.1,
-                                      height: 1,
-                                      color: TColor.white,
-                                    ),
-                                    SizedBox(
-                                      height: media.width * 0.02,
-                                    ),
-                                    Text(
-                                      gObj["subtitle"].toString(),
-                                      textAlign: TextAlign.center,
-                                      style: TextStyle(
-                                          color: TColor.white, fontSize: 12),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          )
-                          .toList(),
-                      carouselController: buttonCarouselController,
-                      options: CarouselOptions(
-                        autoPlay: false,
-                        enlargeCenterPage: true,
-                        viewportFraction: 0.7,
-                        aspectRatio: 0.74,
-                        initialPage: 0,
-                      ),
-                    ),
-                  ),
-
-                ],
-              ),
-              const SizedBox(height: 30,),
-              RoundButton(
-                  title: " Lets Start",
-                  onPressed: () {
-                    navigatorToStartUpScreen();
-                  }),
-            ],
-          ),
-        ),
+      body: PageView(
+        controller: controller,
+        children: const [
+          PageViewItem(),
+          PageViewItem2(),
+        ],
       ),
     );
   }
-  void navigatorToStartUpScreen() {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => const StartUpScreen()));
+}
+
+class PageViewItem extends StatelessWidget {
+  const PageViewItem({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 342.w,
+            height: 350.h,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15).r),
+              elevation: 5,
+              color: const Color(0xffF5F5F5),
+              child: Column(
+                children: [
+                  SizedBox(height: 30.h),
+                  Image.asset('assets/image/Frame.png'),
+                  SizedBox(height: 20.h),
+                  Text(
+                    'Sight Beyond Sight',
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 15.h),
+                  Text(
+                    'AI Object Detection for\nthe Visually Impaired',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 15.h),
+                  SmoothPageIndicator(
+                    controller: controller, // PageController
+                    count: 2,
+                    effect: const ExpandingDotsEffect(
+                      activeDotColor: Color(0xFF86BEFF),
+                      dotColor: Color(0xFFB9B9B9),
+                      dotHeight: 10,
+                      dotWidth: 10,
+                      spacing: 5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 15.h),
+          CustomButton(
+            width: 342,
+            height: 40,
+            color: const Color(0xFF86BEFF),
+            text: 'Next',
+            onPressed: () {
+              controller.nextPage(
+                duration: const Duration(milliseconds: 500),
+                curve: Curves.ease,
+              );
+            },
+          ),
+        ],
+      ),
+    );
   }
 }
+class PageViewItem2 extends StatelessWidget {
+  const PageViewItem2({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: 342.w,
+            height: 350.h,
+            child: Card(
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15).r),
+              elevation: 5,
+              color: const Color(0xffF5F5F5),
+              child: Column(
+                children: [
+                  SizedBox(height: 30.h),
+                  Image.asset('assets/image/Layer2.png'),
+                  SizedBox(height: 20.h),
+                  Text(
+                    'Building Connections',
+                    style: GoogleFonts.poppins(
+                      fontSize: 18.sp,
+                      fontWeight: FontWeight.w600,
+                    ),
+                  ),
+                  SizedBox(height: 15.h),
+                  Text(
+                    'Add Friends for Enhanced\nObject Detection Accessibility',
+                    style: GoogleFonts.poppins(
+                      fontSize: 16.sp,
+                      fontWeight: FontWeight.w500,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                  SizedBox(height: 15.h),
+                  SmoothPageIndicator(
+                    controller: controller, // PageController
+                    count: 2,
+                    effect: const ExpandingDotsEffect(
+                      activeDotColor: Color(0xFF86BEFF),
+                      dotColor: Color(0xFFB9B9B9),
+                      dotHeight: 10,
+                      dotWidth: 10,
+                      spacing: 5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SizedBox(height: 15.h),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16).r,
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                CustomButton(
+                  width: 160,
+                  height: 40,
+                  color: const Color(0xffF5F5F5),
+                  text: 'Back',
+                  onPressed: () {
+                    controller.previousPage(
+                      duration: const Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                ),
+                CustomButton(
+                  width: 160,
+                  height: 40,
+                  color: const Color(0xFF86BEFF),
+                  text: 'Finish',
+                  onPressed: () {
+                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                      return const StartUpScreen();
+                    }));
+
+                  },
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
