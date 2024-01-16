@@ -121,11 +121,11 @@ class _CurrencyDetectionState extends State<CurrencyDetection> {
 
   Future<void> loadYoloModel() async {
     await vision.loadYoloModel(
-        labels: 'assets/models/CLASSES.txt',
-        modelPath: 'assets/models/curr_float32.tflite',
+        labels: 'assets/models/curr.text',
+        modelPath: 'assets/models/curr_float16.tflite',
         modelVersion: "yolov8",
         numThreads: 1,
-        useGpu: true);
+        useGpu: false);
     setState(() {
       isLoaded = true;
     });
@@ -142,6 +142,7 @@ class _CurrencyDetectionState extends State<CurrencyDetection> {
     if (result.isNotEmpty) {
       setState(() {
         yoloResults = result;
+        print('result = $result');
       });
     }
   }

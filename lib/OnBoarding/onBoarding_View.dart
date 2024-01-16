@@ -5,6 +5,7 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:graduation_project/start_up_screen.dart';
 
 import '../commen_component/app_buttons/custom_button.dart';
+import '../swap.dart';
 
 final controller = PageController(initialPage: 0);
 
@@ -181,7 +182,7 @@ class PageViewItem2 extends StatelessWidget {
                   text: 'Finish',
                   onPressed: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                      return const StartUpScreen();
+                      return const SwapPage();
                     }));
 
                   },

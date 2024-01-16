@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:graduation_project/commen_component/app_buttons/round_button.dart';
 import 'package:graduation_project/home_screen/Home.dart';
 import 'package:graduation_project/creat_account/login/screen/login_screen.dart';
 import 'package:graduation_project/creat_account/register/screen/register_screen.dart';
+
+FlutterTts flutterTts = FlutterTts();
 
 class StartUpScreen extends StatefulWidget {
   const StartUpScreen({Key? key}) : super(key: key);
@@ -12,6 +15,13 @@ class StartUpScreen extends StatefulWidget {
 }
 
 class _StartUpScreenState extends State<StartUpScreen> {
+  @override
+  void initState() {
+    flutterTts.setSpeechRate(0.60);
+    flutterTts.setLanguage("en-US");
+    flutterTts.speak("Swipe right to skip");
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -42,15 +52,6 @@ class _StartUpScreenState extends State<StartUpScreen> {
                 ],
               ),
             ),
-            const Spacer(),
-            RoundButton(
-              bottomCircular: 0,
-              title:  'Tap twice to Skip',
-              onTap: (){
-                navigateToHomeScreen();
-              },
-
-            )
           ],
         ),
       ),

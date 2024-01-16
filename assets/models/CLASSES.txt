@@ -1,7 +1,0 @@
-names:
-- 100Egp
-- 10Egp
-- 200Egp
-- 20Egp
-- 50Egp
-- 5Egp

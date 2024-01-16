@@ -1,9 +1,9 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:graduation_project/home_screen/Home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:graduation_project/splashScreen.dart';
-
 
 
  List<CameraDescription> cameras=[];
@@ -23,12 +23,9 @@ class MyApp extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (_, child) {
-        return  MaterialApp(
+        return const MaterialApp(
           debugShowCheckedModeBanner: false,
           home: SplashScreen(),
-          // Scaffold(
-          //   body: SplashScreen(),
-         // ),
         );
       },
     );

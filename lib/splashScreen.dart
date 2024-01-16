@@ -1,7 +1,10 @@
 import 'dart:async';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_tts/flutter_tts.dart';
 import 'package:graduation_project/OnBoarding/onBoarding_View.dart';
+
+FlutterTts flutterTts = FlutterTts();
 
 
 class SplashScreen extends StatefulWidget {
@@ -14,6 +17,9 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
+    flutterTts.setSpeechRate(0.60);
+    flutterTts.setLanguage("ar-SA");
+    flutterTts.speak("بصيرة");
     Timer(const Duration(seconds: 3), () {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
         return const PageViewScreen();

@@ -13,7 +13,6 @@
 // import 'face model/detector.dart';
 // import 'face model/utils.dart';
 //
-//
 // class FaceRecognitionView extends StatefulWidget {
 //   const FaceRecognitionView({Key? key}) : super(key: key);
 //
