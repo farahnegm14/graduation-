@@ -1,17 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:graduation_project/home_screen/Home.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:graduation_project/start_up_screen.dart';
-
 import '../commen_component/app_buttons/custom_button.dart';
-import '../swap.dart';
+import 'package:flutter_tts/flutter_tts.dart';
+import 'dart:async';
 
+FlutterTts flutterTts = FlutterTts();
 final controller = PageController(initialPage: 0);
 
-class PageViewScreen extends StatelessWidget {
+class PageViewScreen extends StatefulWidget {
   const PageViewScreen({Key? key}) : super(key: key);
 
+  @override
+  State<PageViewScreen> createState() => _PageViewScreenState();
+}
+
+class _PageViewScreenState extends State<PageViewScreen> {
+  @override
+  void initState() {
+    flutterTts.setSpeechRate(0.55);
+    flutterTts.setLanguage("en-US");
+    flutterTts.speak("Swap right twice to go to home page");
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,6 +33,7 @@ class PageViewScreen extends StatelessWidget {
         children: const [
           PageViewItem(),
           PageViewItem2(),
+        HomeScreen(),
         ],
       ),
     );
@@ -100,6 +114,7 @@ class PageViewItem extends StatelessWidget {
     );
   }
 }
+
 class PageViewItem2 extends StatelessWidget {
   const PageViewItem2({
     super.key,
@@ -182,7 +197,7 @@ class PageViewItem2 extends StatelessWidget {
                   text: 'Finish',
                   onPressed: () {
                     Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                      return const SwapPage();
+                      return const HomeScreen();
                     }));
 
                   },

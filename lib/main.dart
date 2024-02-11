@@ -1,15 +1,15 @@
 import 'package:camera/camera.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_tts/flutter_tts.dart';
-import 'package:graduation_project/home_screen/Home.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:graduation_project/splashScreen.dart';
+import 'package:graduation_project/OnBoarding/splashScreen.dart';
+import 'package:graduation_project/data_source/local/preference_utils.dart';
+
 
 
  List<CameraDescription> cameras=[];
  Future<void> main() async{
    WidgetsFlutterBinding.ensureInitialized();
-   // cameras = await availableCameras();
+   await PreferenceUtils.init();
    runApp(const MyApp());
 }
 

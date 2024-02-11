@@ -1,7 +1,8 @@
+
+
+
 import 'package:flutter/material.dart';
-
-import '../app_colors/color_extension.dart';
-
+import 'package:graduation_project/commen_component/app_colors/color_extension.dart';
 
 enum RoundButtonType { bgGradient, bgSGradient , textGradient }
 
@@ -12,8 +13,8 @@ class RoundButton extends StatelessWidget {
   final double fontSize;
   final double elevation;
   final FontWeight fontWeight;
-  final double bottomCircular ;
   final VoidCallback? onTap ;
+  final double buttomSize ;
 
   const RoundButton(
       {super.key,
@@ -22,7 +23,7 @@ class RoundButton extends StatelessWidget {
         this.fontSize = 16,
         this.elevation = 1,
         this.fontWeight= FontWeight.w700,
-        this.bottomCircular = 20,
+        this .buttomSize = double.infinity,
         this.onTap ,
         this.onPressed});
 
@@ -31,15 +32,16 @@ class RoundButton extends StatelessWidget {
     return InkWell(
       onDoubleTap: onTap,
       child: Container(
+        width: buttomSize,
         decoration: BoxDecoration(
             gradient: LinearGradient(
               colors: type == RoundButtonType.bgSGradient ? TColor.secondaryG :  TColor.primaryG,
             ),
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft:Radius.circular(20),
                 topRight: Radius.circular(20),
-               bottomLeft: Radius.circular(bottomCircular),
-               bottomRight: Radius.circular(bottomCircular)
+               bottomLeft: Radius.circular(20),
+               bottomRight: Radius.circular(20)
             ),
             boxShadow: type == RoundButtonType.bgGradient ||  type == RoundButtonType.bgSGradient
                 ? const [

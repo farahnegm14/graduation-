@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'commen_component/app_widgets/request_friend_card.dart';
+import '../commen_component/app_widgets/request_friend_card.dart';
 
 class NotificationScreen extends StatefulWidget {
   const NotificationScreen({Key? key}) : super(key: key);

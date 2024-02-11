@@ -25,7 +25,7 @@
 //     size: Size(image.width.toDouble(), image.height.toDouble()),
 //     imageRotation: rotation,
 //     inputImageFormat: InputImageFormatMethods.fromRawValue(image.format.raw) ??
-//         InputImageFormat.NV21,
+//         InputImageFormat.nv21,
 //     planeData: image.planes.map(
 //           (Plane plane) {
 //         return InputImagePlaneMetadata(
@@ -49,7 +49,7 @@
 //     return handleDetection(
 //       InputImage.fromBytes(
 //         bytes: image.planes[0].bytes,
-//         inputImageData: buildMetaData(image, rotation),
+//         inputImageData: buildMetaData(image, rotation), metadata: null,
 //       ),
 //     );
 //   } catch (e) {
@@ -60,14 +60,14 @@
 // InputImageRotation rotationIntToImageRotation(int rotation) {
 //   switch (rotation) {
 //     case 0:
-//       return InputImageRotation.Rotation_0deg;
+//       return InputImageRotation.rotation0deg;
 //     case 90:
-//       return InputImageRotation.Rotation_90deg;
+//       return InputImageRotation.rotation90deg;
 //     case 180:
-//       return InputImageRotation.Rotation_180deg;
+//       return InputImageRotation.rotation180deg;
 //     default:
 //       assert(rotation == 270);
-//       return InputImageRotation.Rotation_270deg;
+//       return InputImageRotation.rotation270deg;
 //   }
 // }
 //

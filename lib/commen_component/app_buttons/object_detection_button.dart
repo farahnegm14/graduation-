@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:graduation_project/commen_component/app_colors/color_extension.dart';
 
 
 class CustomButtonDetection extends StatelessWidget {
@@ -6,7 +7,6 @@ class CustomButtonDetection extends StatelessWidget {
   final String text;
   final Color iconColor;
   final Color textColor;
-  final Color backgroundColor;
   final double iconSize;
   final double fontSize;
   final FontWeight fontWeight;
@@ -20,7 +20,6 @@ class CustomButtonDetection extends StatelessWidget {
     this.iconColor = Colors.white,
     this.textColor = Colors.white,
     this.iconSize = 60,
-    this.backgroundColor = const Color(0xff2c445d),
     this.fontSize = 25,
     this.fontWeight = FontWeight.bold,
     this.borderRadius = 20,
@@ -35,7 +34,14 @@ class CustomButtonDetection extends StatelessWidget {
         child: Container(
           width: double.infinity,
           decoration: BoxDecoration(
-            color: backgroundColor,
+            gradient: LinearGradient(
+              begin: Alignment.centerLeft,
+              end: Alignment.centerRight,
+              colors: <Color>[
+                TColor.primaryColor1,
+                TColor.primaryColor2
+              ],
+            ),
             borderRadius: BorderRadius.circular(borderRadius),
           ),
           child: Padding(

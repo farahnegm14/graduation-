@@ -2,7 +2,7 @@
     package="your_package_name">
 
     <application
-        android:label="graduation_project"
+        android:label="basyrah"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
 
